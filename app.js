@@ -2,6 +2,7 @@ const express = require('express');
 const Cola_manager = require('./cola_manager');
 const Jugador = require('./player');
 const Cola = require('./cola');
+const {sendEvent} = require('./events');
 const app = express();
 const port = 5103;
 
@@ -18,11 +19,20 @@ function get_player_data(id_player){
     return jugador;
 }
 //aquí se intenta iniciar la partida, comprobando si la cola está llena
-function intentar_partida(id_cola){}
+function intentar_partida(id_cola){
+    const data = cola_manager.get_cola(id_cola);
+    if(data.result){
+        const cola = data.data;
+        if(cola.ready()){
+            sendEvent('game_start', cola.serialize());
+        }
+    }
+}
 
 app.post('/cola/unirse', (req, res)=>{
-    const { id_player, num_players, tipo_cola } = req.body;
-    const jugador = get_player_data(id_player);
+    const { player_data, num_players, tipo_cola } = req.body;
+    const id_player = player_data.id_player;
+    const jugador = new Jugador(id_player, player_data.name, parseInt(player_data.mmr));//get_player_data(id_player);
     const adicion = cola_manager.add_player(jugador, num_players, tipo_cola);
     cola_manager.print_colas();//debug para mirar el estado de las colas
     if(!adicion.state){

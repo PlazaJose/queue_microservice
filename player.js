@@ -25,6 +25,11 @@ class Jugador{
     player_to_string(){
         return `jugador {id: ${this.id}, name: ${this.name}, mmr: ${this.mmr}}`;
     }
+    serialize(){
+        return {
+            id:this.id, name:this.name, mmr:this.mmr
+        };
+    }
 }
 
 module.exports = Jugador;

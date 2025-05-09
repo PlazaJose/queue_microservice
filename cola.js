@@ -90,6 +90,20 @@ class Cola{
     ready(){
         return (this.player_list.length==this.num_players);
     }
+    serialize(){
+        return {
+            id_cola : this.id,
+            tipo_cola : this.tipo_cola,
+            jugadores : this.get_serialized_player_list()
+        };
+    }
+    get_serialized_player_list(){
+        const sp = [];
+        this.player_list.forEach(jugador => {
+            sp.push(jugador.serialize());
+        });
+        return sp;
+    }
     cola_to_string(){
         let players_string = "";
         this.player_list.forEach(jugador => {
