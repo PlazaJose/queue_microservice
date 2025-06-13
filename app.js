@@ -88,7 +88,11 @@ app.get('/cola/all', (req, res) => {
 fetch('https://jsonplaceholder.typicode.com/posts', {
     method: 'GET'
 }).then(res => res.json()).then(console.log).catch(console.error);
-
+fetch('https://match-microservice.vercel.app/match/create_match', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(q_data)
+        }).then(res => res.json()).then(console.log).catch(console.error);
 // Start the server
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);
