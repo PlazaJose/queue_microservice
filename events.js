@@ -22,6 +22,7 @@ async function start_match(q_data) {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(q_data)
         });
+        console.log("Request sent. Awaiting response...");
 
         const data = await response.json();
         
@@ -30,8 +31,10 @@ async function start_match(q_data) {
         } else {
             console.error("Error creating match:", data);
         }
+        console.log(data);
     } catch (error) {
         console.error("Failed to connect to match service:", error);
+        throw error;
     }
 }
 
