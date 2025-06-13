@@ -21,7 +21,7 @@ async function start_match(q_data) {
         const response = await fetch('https://match-microservice.vercel.app/match/create_match', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(q_data)
+            body: JSON.stringify({data:q_data})
         });
         console.log("Request sent. Awaiting response...");
 
