@@ -9,6 +9,25 @@ const port = 5103;
 // Middleware to parse JSON
 app.use(express.json());
 
+app.get("/", (req, res) => {
+    res.send(`
+        <html>
+        <head>
+            <title>BMBR queue</title>
+            <style>
+                body { font-family: Arial, sans-serif; text-align: center; padding: 50px; }
+                h1 { color: #007bff; }
+            </style>
+        </head>
+        <body>
+            <h1>Welcome to the BMBR queue manager  🚀</h1>
+            <p>Use the API endpoints to retrieve data.</p>
+            <p>Try: <code>/cola/status/:id</code> or <code>/cola/all</code> </p>
+        </body>
+        </html>
+    `);
+});
+
 //manejo de colas
 const cola_manager = new Cola_manager();
 
@@ -59,7 +78,9 @@ app.get('/cola/status/:id_cola', (req, res) =>{
     res.json({ready: cola.ready(), message: cola.cola_to_string()});
 });
 
-
+app.get('/cola/all', (req, res) => {
+    return res.json(cola_manager.serialize());
+});
 
 // Start the server
 app.listen(port, () => {

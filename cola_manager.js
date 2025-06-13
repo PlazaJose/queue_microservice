@@ -71,5 +71,12 @@ class Cola_manager{
             console.log(cola.cola_to_string());
         });
     }
+    serialize(){
+        let cm ={};
+        this.cola_list.forEach(cola => {
+            cm["cola"+cola.get_id()] = cola.serialize();
+        });
+        return cm;
+    }
 }
 module.exports = Cola_manager;
