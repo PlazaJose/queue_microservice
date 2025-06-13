@@ -15,7 +15,7 @@ async function sendEvent(eventType, eventData) {
 }
 
 async function start_match(q_data) {
-    console.log("starting match...")
+    console.log("starting match...");
     try {
         const response = await fetch('https://match-microservice.vercel.app/match/create_match', {
             method: 'POST',
