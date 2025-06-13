@@ -16,8 +16,8 @@ async function sendEvent(eventType, eventData) {
 
 async function start_match(q_data) {
     console.log("starting match...");
-    console.log("Sending request with:", JSON.stringify(q_data, null, 2));
-    try {
+    try {    
+        console.log("Sending request with:", JSON.stringify(q_data, null, 2));
         const response = await fetch('https://match-microservice.vercel.app/match/create_match', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
