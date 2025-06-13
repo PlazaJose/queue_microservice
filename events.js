@@ -19,7 +19,7 @@ async function start_match(data) {
         const response = await fetch('https://api-gateway-nine-orcin.vercel.app/game/match/create_match', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ id, points })
+            body: JSON.stringify(data)
         });
 
         const data = await response.json();
