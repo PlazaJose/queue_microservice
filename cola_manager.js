@@ -66,7 +66,7 @@ class Cola_manager{
         return {state: false, cola: -1};
     }
     print_colas(){
-        console.log("-----------------------------");
+        console.log("----------------------------");
         this.cola_list.forEach(cola => {
             console.log(cola.cola_to_string());
         });
