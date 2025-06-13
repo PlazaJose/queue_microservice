@@ -32,6 +32,7 @@ async function start_match(q_data) {
         } else {
             console.error("Error creating match:", data);
         }
+
         console.log(data);
     } catch (error) {
         console.error("Failed to connect to match service:", error);

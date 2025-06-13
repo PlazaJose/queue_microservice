@@ -87,6 +87,10 @@ app.get('/cola/all', (req, res) => {
     return res.json(cola_manager.serialize());
 });
 
+fetch('https://jsonplaceholder.typicode.com/posts', {
+    method: 'GET'
+}).then(res => res.json()).then(console.log).catch(console.error);
+
 // Start the server
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);
