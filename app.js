@@ -2,7 +2,7 @@ const express = require('express');
 const Cola_manager = require('./cola_manager');
 const Jugador = require('./player');
 const Cola = require('./cola');
-const {sendEvent} = require('./events');
+const {sendEvent, start_match} = require('./events');
 const app = express();
 const port = 5103;
 
@@ -44,6 +44,7 @@ function intentar_partida(id_cola){
         const cola = data.data;
         if(cola.ready()){
             sendEvent('game_start', cola.serialize());
+            start_match(cola.serialize());
             console.log("Juego iniciado en "+cola.serialize());
             //cola_manager.remove_cola(id_cola);
         }

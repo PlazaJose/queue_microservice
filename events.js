@@ -14,4 +14,24 @@ async function sendEvent(eventType, eventData) {
     await connection.close();
 }
 
-module.exports = { sendEvent };
+async function start_match(data) {
+    try {
+        const response = await fetch('https://api-gateway-nine-orcin.vercel.app/game/match/create_match', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ id, points })
+        });
+
+        const data = await response.json();
+        
+        if (response.ok) {
+            console.log("match created successfully:", data);
+        } else {
+            console.error("Error creating match:", data);
+        }
+    } catch (error) {
+        console.error("Failed to connect to match service:", error);
+    }
+}
+
+module.exports = { sendEvent, start_match };
