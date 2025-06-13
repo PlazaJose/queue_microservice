@@ -44,6 +44,7 @@ function intentar_partida(id_cola){
         const cola = data.data;
         if(cola.ready()){
             sendEvent('game_start', cola.serialize());
+            console.log("Juego iniciado en "+cola.serialize());
             //cola_manager.remove_cola(id_cola);
         }
     }
