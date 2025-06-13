@@ -45,8 +45,9 @@ function intentar_partida(id_cola){
         if(cola.ready()){
             sendEvent('game_start', cola.serialize());
             console.log("Data type of cola.serialize():", typeof cola.serialize());
-            start_match(cola.serialize());
-            console.log("Juego iniciado en "+cola.serialize());
+            start_match(JSON.parse(JSON.stringify(cola.serialize())));
+            //start_match(cola.serialize());
+            console.log("Juego iniciado en ",cola.serialize());
             console.log("Serialized cola:", JSON.stringify(cola.serialize(), null, 2));
             //cola_manager.remove_cola(id_cola);
         }
