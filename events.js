@@ -14,12 +14,12 @@ async function sendEvent(eventType, eventData) {
     await connection.close();
 }
 
-async function start_match(data) {
+async function start_match(q_data) {
     try {
         const response = await fetch('https://api-gateway-nine-orcin.vercel.app/game/match/create_match', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(data)
+            body: JSON.stringify(q_data)
         });
 
         const data = await response.json();
