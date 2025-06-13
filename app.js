@@ -43,7 +43,7 @@ function intentar_partida(id_cola){
     if(data.result){
         const cola = data.data;
         if(cola.ready()){
-            sendEvent('game_start', cola.serialize());
+            //sendEvent('game_start', cola.serialize());
             start_match(JSON.parse(JSON.stringify(cola.serialize())));
             //start_match(cola.serialize());
             console.log("Juego iniciado en ",cola.serialize());
