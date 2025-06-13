@@ -88,6 +88,24 @@ app.get('/cola/all', (req, res) => {
 fetch('https://jsonplaceholder.typicode.com/posts', {
     method: 'GET'
 }).then(res => res.json()).then(console.log).catch(console.error);
+
+const q_data = {
+  "id_cola": 0,
+  "tipo_cola": 0,
+  "jugadores": [
+    {
+      "id": "jose",
+      "name": "jose",
+      "mmr": 0
+    },
+    {
+      "id": "aria",
+      "name": "aria",
+      "mmr": 0
+    }
+  ]
+}
+
 fetch('https://match-microservice.vercel.app/match/create_match', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
